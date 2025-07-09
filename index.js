@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const connectDB = require('./src/config/db');
 const userRouter = require('./src/routes/user.routes');
+const carRouter = require('./src/routes/car.routes');
+
 
 dotenv.config();
 const app = express();
@@ -16,11 +18,11 @@ app.get('/', (req,res) => {
 })
 
 
-app.use('/api/users', userRouter); 
+app.use('/api/users', userRouter);
+app.use('/api/cars', carRouter);
 
 
-
-
+ 
 app.listen(PORT, () => {
     connectDB()
     console.log(`Server is running on http://localhost:${PORT}`)
